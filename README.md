@@ -10,8 +10,8 @@ before clicking on search button , turn on local dummy json server for mock api 
 
 Goto Final>CARS-API
 Open your Git bash here and run :
->>npm install -g json-server
->>json-server --watch db.json
+<code>npm install -g json-server </code>
+<code>json-server --watch db.json </code>
 
 
 After above you are good to go to search in the search bar, lets say search "Audi" and click search button, you will see the list of car cards related to Audi brand.
