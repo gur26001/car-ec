@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Shopping Cart</title>
+
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    header{
+       background-image: url('https://wallpaperaccess.com/full/33110.jpg');
+
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;
+       height: 150px;
+       position: relative;
+    }
+
+    .overlay{
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: rgba(10,10,10,0.3);
+    }
+
+    nav{
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 60px 0 60px;
+    }
+
+    nav li{
+      list-style: none;
+      display: inline-block;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    nav li span{
+      padding-left: 5px;
+    }
+
+    li a{
+      padding: 5px;
+      background-color: #fff;
+      text-decoration: none;
+    }
+
+    .container{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      padding-bottom: 100px;
+    }
+
+    .image{
+      margin-right: 20px;
+      margin-left: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*.add-cart{
+      position: absolute;
+      width: 100%;
+      background-color: darkgrey;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /*.image:hover. cart1,
+    .image:hover. cart2,
+    .image:hover. cart3,
+    .image:hover. cart4,
+    .image:hover. cart5,
+    .image:hover. cart6{
+      bottom: 50px;
+      opacity: 1;
+      padding: 10px;
+      text-decoration: none;
+    }*/
+
+    /*---------------------------CART PAGE---------------------*/
+    .products-container{
+      max-width: 650px;
+      justify-content: space-around;
+      margin: 0 auto;
+      margin-top: 50px;      
+     } 
+
+     .product-header{
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 4px solid lightgrey;
+      margin: 0 auto;
+     }
+
+     .product-title{
+      width: 45%;
+     }
+
+     .price{
+      width: 15%;
+      display: flex;
+      align-items: center;
+     }
+      
+    #fetched{
+            width: 62vw; 
+        }
+        #fetched #searchBar{
+            width: 100%;
+            height: 4.2vh;
+        }
+        #searchedCars{
+            display:flex;
+            flex-direction: row;
+            justify-content:flex-start;
+            align-items:flex-start;
+            position: relative;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        #searchedCars .col{
+            transition: transform 0.5s;
+            width:32vw;
+            height: 75vh;
+            margin:0.1rem;
+            z-index:1;
+            box-shadow:0px 0px 3px black;
+            position:relative; 
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        #searchedCars .col:hover{
+            transform: translateY(-0.5rem);
+            box-shadow:0px 0px 5px black;
+        }
+        #searchedCars .col i{
+            font-weight:bold;
+        }
+        #searchedCars .parent{
+            position:relative;
+            width:100%;
+            height: 200px;
+            z-index:1;
+            top:0;
+            height:58%;
+        }
+        #searchedCars .description{
+            width:100%;
+            
+            padding:1rem;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-around;
+        }
+
+        #searchedCars .button{
+            display:flex;
+            width:100%;
+            justify-content:space-around;
+            
+        }
+        #searchedCars .btn{
+            padding: 10px;
+            width: 6rem;
+            border: 0px;
+        }
+        #searchedCars .image{
+            position: relative;
+            width:100%;
+            height:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            object-fit:cover;
+        }
+        #searchedCars .image img{
+            width:100%;
+            height:100%;
+        }
+        #searchedCars .more{
+        color: white;
+        position: absolute;
+        top: 0.5%;
+        right:1%;
+        z-index:2;
+        }
+        #searchedCars .more i{
+            font-size: 0.3rem;
+            margin: 2px;
+        }
+        #searchedCars .heart{
+            position: absolute;
+            top: 2%;
+            left: 1%;
+            color: beige;
+            /* text-shadow:; */
+        }
+        #searchedCars .heart i{
+            font-size:1.5rem;
+            
+        }
+        #searchedCars .check{
+            position: absolute;
+            bottom: 2%;
+            left: 1.4%;
+        }
+        #searchedCars .check input[type="checkbox"]{
+            width:1.4rem;
+            height:1.4rem;
+        }
+        #searchedCars .rating{
+            padding:0;
+        }  
+    
+  </style>
+</head>
+<body>
+    <header>
+      <div class="overlay"></div>
+      <nav>
+        <h2>SHOP</h2>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li class="cart">
+            <a href="cart.html" style="background-color: royalblue; color: white; cursor: pointer; text-decoration: none;">
+              <i class="fa fa-cart-plus" style="vertical-align: bottom; font-size: 20px; padding-right: 5px;"></i>Cart<span>0</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="products-container">
+      <div class="product-header">
+        <h5 class="product-title">PRODUCT</h5>
+        <h5 class="price">PRICE</h5>
+        <h5 class="quantity">QUANTITY</h5>
+        <h5 class="total">TOTAL</h5>
+      </div>
+      <div class="products">
+        
+      </div>
+    </div>   
+
+    <div class="container">
+      <div class="image">
+        <img src="https://imgctcf.aeplcdn.com/thumbs/p-nc-p-s500-ver4/images/cars/generic/Honda-Amaze.png">
+        <h3>Creta</h3>
+        <h3> ₹15,00,000</h3>
+        <a class="add-cart cart1" href="#">Add to Cart</a>
+      </div>
+      <div class='col'>
+     <div class='parent'>
+        <div class='image'>
+            <!--<img src=   "  (((data[[k]])[  models  ])[j])[  img-url  ] "   >-->
+            <img src="https://cdn1.acedms.com/uploads/category/maruti-suzuki/20170915074030000000-6700492630241514497.png">
+
+
+        </div>
+        <div class='heart'>
+            <i class='fa fa-heart-o' aria-hidden='true'></i>
+        </div>
+        <div class='more'>
+            <i class='fa fa-circle op '  aria-hidden='false'></i>
+            <i class='fa fa-circle op' aria-hidden='false'></i>
+            <i class='fa fa-circle op' aria-hidden='false'></i>
+        </div>
+    </div>
+    <div class='description'>
+        <h2> <!--"  "" (data[k])[  brand  ]""(((data[[k]])[  models  ])[j])[  modelName  ] "" ""--> </h2>
+        <div class='rating'>
+            <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i>
+        </div>
+        <div>
+            <li>Seating-capacity :    <!-- " "" (((data[[k]])[  models  ])[j])[  Seating-capacity  ] "-->   </li>
+            <li>Horsepower :   <!-- " ""(((data[[k]])[  models  ])[j])[  Horsepower  ]  "-->   </li>
+            <li>Engine :    <!-- " "" (((data[[k]])[  models  ])[j])[  Engine  ]  "-->   </li>
+            <li>Fuel-type :   <!-- " ""(((data[[k]])[  models  ])[j])[  Fuel-type  ] "-->   </li>
+            <li>Fuel-economy :   <!-- " "" (((data[[k]])[  models  ])[j])[  Fuel-economy  ]  "-->   </li>
+            <li>Fuel-tank-capacity :   <!-- " "" (((data[[k]])[  models  ])[j])[  Fuel-tank-capacity  ]  "-->   </li>
+            <h2>Price :     <!-- (((data[[k]])[  models  ])[j])[  price  ]  "-->   </h2>
+        </div>
+        <div class='button'>
+            <button class="add-cart" href="#" style="background-color: blue; border: none; height: 35px; width: 60px;">Book Now</button>
+            <!--<button class='btn btn-secondary' onclick="#">Book Now</button>-->
+            <button class='btn btn-primary'>Test drive</button>
+        </div>
+    </div>
+</div>
+      <div class="image">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/39028/marutisuzuki-vitara-brezza-right-front-three-quarter3.jpeg?q=85">
+        <h3>Vitara Breeza</h3>
+        <h3> ₹8,00,000</h3>
+        <a class="add-cart cart2" href="#">Add to Cart</a>
+      </div>
+      <div class="image">
+        <img src="https://imgd.aeplcdn.com/664x374/n/1sd05sa_1478704.jpg?q=85">
+        <h3>Tata Nexon</h3>
+        <h3> ₹7,20,000</h3>
+        <a class="add-cart cart3" href="#">Add to Cart</a>
+      </div>
+      <div class="image">
+        <img src="https://imgctcf.aeplcdn.com/thumbs/p-nc-p-s500-ver4/images/cars/generic/Honda-Amaze.png">
+        <h3>Amaze</h3>
+        <h3> ₹8,00,000</h3>
+        <a class="add-cart cart4" href="#">Add to Cart</a>
+      </div>
+      <div class="image">
+        <img src="https://cdn.autoportal.com/img/new-cars-gallery/marutisuzuki/wagon-r/photo34/marutisuzuki-wagon-r-227d8475.jpg">
+        <h3>Swift</h3>
+        <h3> ₹6,00,000</h3>
+        <a class="add-cart cart5" href="#">Add to Cart</a>
+      </div>
+      <div class="image">
+        <img src="https://cdn1.acedms.com/uploads/category/maruti-suzuki/20170915074030000000-6700492630241514497.png">
+        <h3>i20</h3>
+        <h3> ₹7,00,000</h3>
+        <a class="add-cart cart6" href="#">Add to Cart</a>
+      </div>-->
+    </div>
+
+    
+    <script type="text/javascript">
+
+          
+            let carts = document.querySelectorAll('.add-cart');
+
+      let products = [
+        {
+          name: 'Creta',
+          tag: 'creta',
+          price: 15,
+          inCart: 0
+        },
+        {
+          name: 'Vitara Breeza',
+          tag: 'vitarabreeza',
+          price: 0,
+          inCart: 0
+        },
+        {
+          name: 'Tata Nexon',
+          tag: 'tatanexon',
+          price: 15,
+          inCart: 0
+        },
+        {
+          name: 'Amaze',
+          tag: 'amaze',
+          price: 0,
+          inCart: 0
+        },
+        {
+          name: 'Swift',
+          tag: 'swift',
+          price: 15,
+          inCart: 0
+        },
+        {
+          name: 'i20',
+          tag: '20i',
+          price: 0,
+          inCart: 0
+        }
+     ]
+      for(let i=0; i<carts.length; i++){
+        carts[i].addEventListener('click', () => {
+          cartNumbers(products[i]);
+          totalCost(products[i])
+        })
+      }
+
+      function onLoadCartNumbers(){
+        let productNumbers = localStorage.getItem('cartNumbers');
+
+        if(productNumbers){
+          document.querySelector('.cart span').textContent = productNumbers;
+        }
+      }
+
+      function cartNumbers(product){
+
+        let productNumbers = localStorage.getItem('cartNumbers');
+        
+        productNumbers = parseInt(productNumbers);
+
+        if( productNumbers) {
+            localStorage.setItem('cartNumbers', productNumbers + 1);
+            document.querySelector('.cart span').textContent = productNumbers + 1;
+
+        } else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.cart span').textContent = 1;
+        }
+
+        setItems(product);
+      }
+
+      function setItems(product) {
+        let cartItems = localStorage.getItem('productsInCart');
+        cartItems = JSON.parse(cartItems);
+
+        if(cartItems != null){
+
+          if(cartItems[product.tag] == undefined) {
+            cartItems = {
+              ...cartItems,
+              [product.tag]: product
+            }
+          }
+
+          cartItems[product.tag].inCart += 1;
+        } else {
+          product.inCart = 1;
+          cartItems = {
+            [product.tag]: product
+          }
+        }
+      
+        localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+      }
+
+      function totalCost(product){
+        /*console.log("The product price is", product.price);*/
+        let cartCost = localStorage.getItem('totalCost');
+        cartCost = parseInt(cartCost);
+        console.log("My cartCost is", cartCost);
+        
+        if (cartCost != null) {
+          localStorage.setItem("totalCost", cartCost + product.price);
+        } else{
+          localStorage.setItem("totalCost", product.price);
+        }
+
+      }
+
+      function displayCart(){
+        let cartItems = localStorage.getItem("productsInCart");
+        cartItems = JSON.parse(cartItems);
+        let productContainer = document.querySelector(".products-container");
+
+        console.log(cartItems);
+        if (cartItems && productContainer) {
+          productContainer.innerHTML = '';
+          Object.values(cartItems).map(item => {
+productContainer.innerHTML += "<div class='product'><i class='fa fa-times-circle'></i><img src=./images/"+$(item,tag).png+"><span>"+$(item.name)+"</span></div>"});
+
+          
+        }
+      }
+
+
+      onLoadCartNumbers();
+      displayCart();
+      </script>

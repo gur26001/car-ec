@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<link rel="stylesheet" href="home.css">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		body{
+			position: relative;
+			overflow-x: hidden;
+		}
+		#SLIDER{
+			width: 100%;
+			height: 50vh;
+			position: relative;
+		}
+		#SLIDER .ban{
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+		#SLIDER .ban img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		/*  */
+		main {
+			position: relative;
+		}
+		#fetched{
+            width: 62vw !important;
+        }
+        #fetched #searchBar{
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+		#fetched #searchBar{
+			color: black !important;
+		}
+        #searchedCars{
+            display:flex !important;
+            flex-direction: row !important;
+            justify-content:flex-start !important;
+            align-items:flex-start !important;
+            position: relative !important;
+            width: 100% !important;
+            flex-wrap: wrap !important;
+        }
+
+        #searchedCars .col{
+            transition: transform 0.5s !important;
+            width:32vw !important;
+            height: 75vh !important;
+            margin:0.1rem !important;
+            z-index:1 !important;
+            box-shadow:0px 0px 3px black !important;
+            position:relative !important;
+            display:flex !important;
+            flex-direction:column!important;
+            align-items:center !important;
+        }
+		
+        #searchedCars .col:hover{
+            transform: translateY(-0.5rem) !important;
+            box-shadow:0px 0px 5px black !important;
+        }
+        #searchedCars .col i{
+            font-weight:bold !important;
+        }
+        #searchedCars .parent{
+            position:relative !important;
+            width:100% !important;
+            height: 200px !important;
+            z-index:1!important;
+            top:0 !important;
+            height:58% !important;
+        }
+        #searchedCars .description{
+            width:100% !important;
+            padding:1rem !important;
+            display:flex !important;
+            flex-direction:column !important;
+            justify-content:space-around !important;
+        }
+
+        #searchedCars .button{
+            display:flex !important;
+            width:100% !important;
+            justify-content:space-around !important;
+            
+        }
+        #searchedCars .btn{
+            padding: 10px !important;
+            width: 6rem !important;
+            border: 0px !important;
+        }
+        #searchedCars .image{
+            position: relative !important;
+            width:100% !important;
+            height:100% !important;
+            display:flex !important;
+            justify-content:center !important;
+            align-items:center !important;
+            object-fit:cover !important;
+        }
+        #searchedCars .image img{
+            width:100% !important;
+            height:100% !important;
+        }
+        #searchedCars .more{
+        color: white !important;
+        position: absolute !important;
+        top: 0.5% !important;
+        right:1% !important;
+        z-index:2 !important;
+        }
+        #searchedCars .more i{
+            font-size: 0.3rem !important;
+            margin: 2px !important;
+        }
+        #searchedCars .heart{
+            position: absolute !important;
+            top: 2% !important;
+            left: 1% !important;
+            color: beige !important;
+            /* text-shadow:; */
+        }
+        #searchedCars .heart i{
+            font-size:1.5rem !important;
+            
+        }
+        #searchedCars .check{
+            position: absolute !important;
+            bottom: 2% !important;
+            left: 1.4% !important;
+        }
+        #searchedCars .check input[type="checkbox"]{
+            width:1.4rem !important;
+            height:1.4rem !important;
+        }
+        #searchedCars .rating{
+            padding:0 !important;
+        }
+	</style>
+</head>
+<body >
+	<nav class="nav1" >
+		<ul>
+			<a href="#home"><li><i class="las la-car-side la-2x"></i></li></a>
+			<a href="#slider"><li>Offers</i></li></a>
+			<a href="#bg-video"><li>HOME</i></li></a>
+			<a href="#Cars"><li>PRODUCTS</li></a>
+			<a href="#otherServices"><li>Other Services</li></a>
+			<a href="finalProductList.html" target="_blank"><li><i class="fa fa-search"></i></li></a>
+			<a href="#footy-footer"><li>ABOUT US</li></a>
+			<a href="add cart.html"><li><i class="las la-cart-plus la-2x"></i></li></a>
+			<a  onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-in-alt"></i>&nbsp;LOG-IN</a>
+		</ul>
+	</nav>
+	<!-- Search bar -->
+	 <!-- <section style="height: 20vh;width:100%;background-color: gray;display:flex;justify-content: center;align-items: center;"> -->
+			<!-- <div id="fetched" style="display:flex;height:30%;justify-content: center; align-items: center;">
+				<input type="text" id="searchBar" placeholder="Search by any model name or brand name (Note : don't use comma)" style="height:100%;">
+				<button id="search" class="btn-primary" style="height: 100%;"><a target="_blank" href="finalProductList.html"><span style="height: 100%;width: 100%;padding: 1rem;box-sizing: content-box;"><i class="fa fa-search"></i></span></a></button>
+			</div> -->
+			<!-- <div id="searchedCars" style="position:relative;width:100%;"> -->
+			<!-- </div> -->
+	<!-- </section> -->
+	<main>
+	<!--SLIDER-->
+	<div id="slider">
+		<section id="SLIDER" style="height:100vh;">
+				<div class="banner1 ban">
+					<img src="https://bit.ly/3bussWg">>
+					<div class="text-box text-box1">
+						<h1>Lorem Ipsum</h1>
+						<span></span>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>	
+				</div>	
+			
+				<div class="banner2 ban">
+					<img src="https://bit.ly/2RYuDug" width="100%">
+					<div class="text-box text-box2">
+						<h1>Lorem Ipsum</h1>
+						<span></span>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>	
+				</div>	
+			
+				<div class="banner3 ban">
+					<img src="https://www.luxurylifestylemag.co.uk/wp-content/uploads/2020/05/P90261371_highRes_rolls-royce-sweptail.jpg" height="100%" width="100%">
+
+					<div class="text-box text-box3">
+						<h1>Lorem Ipsum</h1>
+						<span></span>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						
+					</div>	
+				</div>	
+			
+				<div class="banner4 ban">
+					<img src="https://mcmscache.epapr.in/post_images/website_300/post_18902040/thumb.jpg" height="100%" width="100%">
+
+					<div class="text-box text-box4">
+						<h1>Lorem Ipsum</h1>
+						<span></span>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>	
+				</div>	
+		</section>
+
+	</div>
+		<div id="id01" class="modal">
+            <form class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="media/avatar.jpg" alt="Avatar" class="avatar">
+                </div>
+              
+                <div class="container">
+                    <label for="uname" id="Sadsa"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+              
+                    <label for="psw" ><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                      
+                    <button  class="btn-modal" type="submit">Login</button><br>
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+              
+                <div class="container" style="background-color:#443f3f">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
+	<!--SCROLL VIDEO-->
+	<section id="bg-video">
+		<div id="box">
+			<div id="details">
+				<div id="d1" class="detail">
+					<div>
+						<h1>You can do...</h1>
+						<p class="paras">
+							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+						</p>
+					</div>
+
+				</div>
+				<div id="d2" class="detail">
+					<div>
+						<h1>Other than these...</h1>
+						<p class="paras">
+							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+						</p>
+					</div>
+
+				</div>
+			</div>
+			<video id="vid" src="media\intro.mp4"></video>
+		</div>
+	</section>
+	
+	
+	<!-- NEWLY LAUNCHED CARSSSS- -->
+	<section id="Cars">
+
+		<div id="categories">
+
+		</div>
+		<h1 style=" padding-left: 1rem;">
+			Newly Launched Cars
+		</h1>
+		<div class="parent  container-fluid">
+			<div id="newlyPrev" class="scrollBtn previous">
+				<a><i class="fas fa-arrow-left fa-1x"></i></a>
+			</div>
+			<div id="newlyNext" class="scrollBtn next">
+				<a><i class="fas fa-arrow-right fa-1x"></i></a>
+			</div>
+			
+			
+			<!-- <div class="wrapper"> -->
+			<div id="newlyLaunched" class="slider">
+
+				<div class="Card">
+					
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2krlROWUmgXASRCrm608Gp1oEiyhPxHMLWHNO9cvwXzZjQixUG4WsaBuCLB9ulCP5GaRhj5sgXAOHCrmMTVkHNekxFw0dXRTZGEIBQmSnLcTifGtRd%25kw8jWU9" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfQdQl10tLhu1XzWVo7puMLWFmdkAj5DOPccf%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giLhNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYV05Wh1DMztileeqVYDafH6ojmztYRSJyL67aftxdTCkw1RSfWQlEv%25VxdSeZG4NuzWQdjc9NR3aeZQ6KownXRjcZwBL%25mrx6KcOxgmqTACygNWaImlOECUkeie7sgNEbn%25RP10UkNh5urMVAbnkq834azOh5nmPX7Jagq857Mr1xRUmP81D4YSxb7MPVYFt9Wh1DMztIlJeqVYDafv3LjmztYRSGjM67aftxd9Uww1RSfWQosX%25VxdSeZL06uzWQdjcyX23aeZQ6KCoXXRjcZwBELsrx6Kc%252ZKb4WwBKupciIFe%252B3iKLlIjup2XHByXv63iprJ2C3GwXHi4TpE89%25rJHFliNJou4TJIsHkDL3FlTv0J69yXIslGAnnbCrv0s9O5QJE4GA0og8j3NF9OALUPMykIogOybMD4nvLUgChDYK5GybUEqYtD89ChbNmtfnPoEqhk7fSYMLNmqn1SwtDyk7m5VdaxYCn178zQRAtE5V1PaZxjfN8zVMRc4XSkPazDxKiUdnMRaYWBHLQ5DxRte2m2Z8YWxfjtO9cPteWS6fgBKMfjedwSIJBDS6jQ%25dDt2YI6lUJujnWqAwIrxlRYechZ7dfCs" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+
+			</div>
+			 <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+			
+		</div>
+		<h1 style="padding-left: 1rem;">Popular Cars</h1>
+		<div class="parent container-fluid">
+			
+			<div id="newlylp1" class="scrollBtn1 previous1">
+				<a><i class="fas fa-arrow-left fa-1x"></i></a>
+			</div>
+			<div id="newly1" class="scrollBtn1 next1">
+				<a><i class="fas fa-arrow-right fa-1x"></i></a>
+			</div>
+			
+			<!-- <div class="wrapper"> -->
+			<div id="newlypopu" class="slider1">
+
+				<div class="Card">
+					
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2krlROWUmgXASRCrm608Gp1oEiyhPxHMLWHNO9cvwXzZjQixUG4WsaBuCLB9ulCP5GaRhj5sgXAOHCrmMTVkHNekxFw0dXRTZGEIBQmSnLcTifGtRd%25kw8jWU9" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfQdQl10tLhu1XzWVo7puMLWFmdkAj5DOPccf%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giLhNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYV05Wh1DMztileeqVYDafH6ojmztYRSJyL67aftxdTCkw1RSfWQlEv%25VxdSeZG4NuzWQdjc9NR3aeZQ6KownXRjcZwBL%25mrx6KcOxgmqTACygNWaImlOECUkeie7sgNEbn%25RP10UkNh5urMVAbnkq834azOh5nmPX7Jagq857Mr1xRUmP81D4YSxb7MPVYFt9Wh1DMztIlJeqVYDafv3LjmztYRSGjM67aftxd9Uww1RSfWQosX%25VxdSeZL06uzWQdjcyX23aeZQ6KCoXXRjcZwBELsrx6Kc%252ZKb4WwBKupciIFe%252B3iKLlIjup2XHByXv63iprJ2C3GwXHi4TpE89%25rJHFliNJou4TJIsHkDL3FlTv0J69yXIslGAnnbCrv0s9O5QJE4GA0og8j3NF9OALUPMykIogOybMD4nvLUgChDYK5GybUEqYtD89ChbNmtfnPoEqhk7fSYMLNmqn1SwtDyk7m5VdaxYCn178zQRAtE5V1PaZxjfN8zVMRc4XSkPazDxKiUdnMRaYWBHLQ5DxRte2m2Z8YWxfjtO9cPteWS6fgBKMfjedwSIJBDS6jQ%25dDt2YI6lUJujnWqAwIrxlRYechZ7dfCs" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+				<div class="Card">
+					<div class="more">
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+						<i class="fa fa-circle"></i>
+					</div>
+					<div class="image">
+						<img src="https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnWy10tLhu1XzWVo7puMLWFmdkAj5DOPFtpOZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAyNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVD9Wh1DMzti%25eeqVYDafHRAjmztYRSJdw67aftxdTQVw1RSfWQlO%25%25VxdSeZGEbuzWQdjc9NO3aeZQ6KowfXRjcZwBL%255rx6Kc%252NG84WwBKupk81Fe%252B3inXVIjup2XH5rGv63iprJ8iKGwXHi4TPHA9%25rJHFlMsOou4TJIsDRXL3FlTv0YfeyXIslGAtebCrv0s9OfjNE4GA0ogS7wNF9OALUd1XkIogOybAMBnvLUgChOD85GybUEqgNV89ChbNmUhIPoEqhk7b1DMLNmqn1hrJDyk7m5VqbIYCn178zmJttE5V1PaXslfN8zVMRr0kSkPazDxiBndnMRaYWH2qQ5DxRteJrcZ8YWxfj0wpcPteWS6AlHKMfjedwWJXBDS6jQ%25eTv2Ydw6ZujlaptQ%25wc3ZpLifZu%25KXcolHS9uAqsr%25P61U39IjAeSw27BzcQkO" alt="">
+					</div>
+					<div class="carBox" style="width: 100%;">
+						<table style="width: 100%;">
+							<tr >
+								<td>
+									<h1>
+										BMW X1
+									</h1>
+								</td>
+									<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0.5rem 1rem 0 0;">
+										<button class="btn-primary buyNow " style="color: white; box-shadow: 1px 1px 5px rgb(20, 118, 245);">Buy Now</button>
+									</td>
+								
+							</tr>
+							<tr >
+								<td >
+										Starting from Rs.3,720,000
+								</td>
+								<td style="display: flex; flex-direction: row; justify-content: flex-end; align-items: flex-end; margin:0 1rem 0 0;">
+									<button class="btn-secondary buyNow " style="color: white;  ">Book a Drive</button>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		
+		<div id="upcomingCars">
+		</div>
+	</section>
+	<!--OTHER SERVICES CATEGORIES SECTION-->
+	<section id="otherServices">
+		<div class="other-services">
+			<div class="outer-div">
+				<div class="inner-div"></div>
+			</div>
+			<div class="outer-div">
+				<div class="inner-div"></div>
+			</div>
+			<div class="outer-div" onclick="popup()" id="ooo">
+				<div class="inner-div"></div>
+			</div>
+			<div class="outer-div">
+				<div class="inner-div"></div>
+			</div>
+			
+		</div>
+		<div id="bookcar1" class="bookcar">
+			<div id="modal1">
+				<div id="header" style="width: 100%;height:20%;">
+					<h2>SERVICE FORM<i style="padding-left: 20px;" class="fas fa-cogs"></i></h2>
+					<a class="header-close"><i class="far fa-window-close"></i></a>
+				</div>
+				<div id="content" style="width: 100%;height:60%;">
+					<form>
+						<table class="content_table">
+							<tr>
+								<td><label>Car</label><i style="color:black;font-size: 25px;padding-left: 20px;"class="fas fa-car-side"></i></td>
+								<td>
+									<select id="cars" name="cars">
+									<option value="volvo">Volvo</option>
+									<option value="saab">Saab</option>
+									<option value="fiat">Fiat</option>
+									<option value="audi">Audi</option>
+									</select><br>
+								</td>
+								<td rowspan="14" style="padding-left: 20px;"><img src="media/ser2.jpg"></td>
+
+							</tr>
+							<tr>
+								<td><label>Model</label></td>
+								<td><select id="cars" name="cars">
+									<option value="volvo">MA21</option>
+									<option value="saab">Lo12</option>
+									<option value="fiat">Fi983</option>
+									<option value="audi">A6</option>
+									</select><br>
+								</td>
+							</tr>
+							<tr>
+								<td><label>Date <i style="padding-left: 3px;" class="fas fa-calendar-week"></i> for Pickup</label</td>
+								<td><input type="date"><br></td>
+							</tr>
+							<tr>
+								<td><label>Date  <i style="padding-left: 3px;" class="fas fa-calendar-week"></i> for Pickup</label</td>
+								<td><input type="date"><br></td>
+							</tr>
+							<tr>
+								<td><label>Time  <i style=" padding-left: 3px;"class="fas fa-clock"></i> for Pickup</label</td>
+								<td><input type="time"><br></td>
+							</tr>
+							<tr>
+								<td><label>Time  <i style=" padding-left: 3px;"class="fas fa-clock"></i> for Pickup</label</td>
+								<td><input type="time"><br></td>
+							</tr>
+							
+							
+						</table>
+					</form>
+					<div id="content-end" >
+						<button id="content-submit">Submit</button>
+						<button id="content-close" onclick="document.getElementById('bookcar1').style.display='none'">Close</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+	<footer>
+		<section id="footy-footer">
+
+		</section>
+		
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+			var x=document.getElementById("bookcar1");
+			function popup(){
+				x.style.display = "block";
+			}
+			$(document).ready(function(){
+				$("#ooo").click(function(){
+				$("#bookcar1").animate({width: '65%',height:'80%',top:'-650px',left:'20%'});
+				});
+				function substrings(str){
+                let i, j;
+                const res = [];
+                for (i = 0; i < str.length; i++) {
+                    for (j = i + 1; j < str.length + 1; j++) {
+                        res.push(str.slice(i, j));
+                    };
+                };
+				return res;
+            }
+
+
+			// 
+
+			// $("#search").click(function(){
+            //     var searched= $("#searchBar").val();
+            //     var fg=0;
+            //     var keyWords = searched.split(" ");
+
+
+            //     $.get("http://localhost:3000/cars",function(data){
+            //         $("main").text("");
+            //         console.log(data);
+            //         var flag= 0;
+            //         for(var i=0;i<keyWords.length;i++){
+            //             // var subKeyWords= substrings(keyWords[i]);
+            //             var toCheck= new RegExp(keyWords[i],"i");
+            //             for(var k=0;k<data.length;k++){
+            //                 // var ft= data(k) ;
+            //                 var test = toCheck.test((data[k])["brand"]);
+            //                 // if(searched.length==2 && (data))
+            //                 if(test){//will check company name by keywords
+            //                     for(var j = 0;j<(data[[i]])["models"].length;j++){
+            //                         flag=1;
+            //                         $("main").append("<div class='col'><div class='parent'><div class='image'><img src= "+ (((data[[k]])["models"])[j])["img-url"] + "></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div></div><div class='description'><h2>"+ (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] +"</h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])["models"])[j])["Seating-capacity"] + "</li><li>Horsepower : "+(((data[[k]])["models"])[j])["Horsepower"] + "</li><li>Engine : " + (((data[[k]])["models"])[j])["Engine"] + "</li><li>Fuel-type : "+(((data[[k]])["models"])[j])["Fuel-type"]+ "</li><li>Fuel-economy :" + (((data[[k]])["models"])[j])["Fuel-economy"] + "</li><li>Fuel-tank-capacity : " + (((data[[k]])["models"])[j])["Fuel-tank-capacity"] + "</li><h2>Price : " + (((data[[k]])["models"])[j])["price"] + "</h2></div><div class='button'><button class='btn btn-secondary'>View Details</button><button class='btn btn-primary'> Test drive</button></div></div></div>");
+            //                     }
+
+            //                 }
+            //                 else{//will check company name by keywords
+            //                     for(var j=0;j<(data[k])["models"].length;j++){
+            //                         var test2= toCheck.test((((data[k])["models"])[j])["modelName"]);
+            //                         if(test2){
+            //                             flag=1;
+
+        
+            //                             $("main").append("<div class='col'><div class='parent'><div class='image'><img src= "+ (((data[[k]])["models"])[j])["img-url"] + "></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div><div class='check'><input type='checkbox'></div></div><div class='description'><h2>"+ (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] +"</h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])["models"])[j])["Seating-capacity"] + "</li><li>Horsepower : "+(((data[[k]])["models"])[j])["Horsepower"] + "</li><li>Engine : " + (((data[[k]])["models"])[j])["Engine"] + "</li><li>Fuel-type : "+(((data[[k]])["models"])[j])["Fuel-type"]+ "</li><li>Fuel-economy :" + (((data[[k]])["models"])[j])["Fuel-economy"] + "</li><li>Fuel-tank-capacity : " + (((data[[k]])["models"])[j])["Fuel-tank-capacity"] + "</li><h2>Price : " + (((data[[k]])["models"])[j])["price"] + "</h2></div><div class='button'><button class='btn btn-secondary'>View Details</button><button class='btn btn-primary'> Test drive</button></div></div></div>");
+                                        
+            //                         }
+            //                     }
+                                
+            //                 }
+            //                 if(flag==0){
+            //                     $("main").text("Not Found");
+            //                 }
+
+            //             }
+                        
+                        
+            //             // else if(){} //will check model name by keywords
+            //             // else if(){} //will check by substrings to check company name
+            //             // else if(){} //will check by substrings to check model name
+            //             // else{$("#searchedCars").text("Not Found")}  //result not found
+                        
+            //         }
+            //     })
+            // })
+			});
+		</script>
+		<script src="home.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+		<script src="home2.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #car-container{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+        #car360{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            /* position: absolute; */
+            /* z-index: 1; */
+            
+        }
+         #fullScreen i{ 
+            background-color: white;
+         } 
+            /* position: absolute;
+            
+            right: 10%;
+            bottom: 5%;
+            z-index: 5;
+        */
+    </style>
+</head>
+<body>
+ <div style="display:flex;justify-content:space-around;align-items:flex-start ; ">
+    <div id="fullScreen">
+            <i  class="fa fa-expand"></i>
+    </div>
+    <div id="car-container" class="container container-fluid">
+        <!-- <iframe id="car360"  src="https://www.glo3d.net/iFrame/mX-xaiVgCr"  frameborder="0"  scrolling="no"  >
+        </iframe> -->
+        <iframe id="car360" src="https://www.glo3d.net/iFrame/mX-xaiVgCr"  width="100%"  height="100%"  frameborder="0"  scrolling="no"  ></iframe>
+    </div>
+ </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var carContainer = document.getElementById("car360");
+            $("#fullScreen").click(function(){
+                if(carContainer.requestFullscreen){   //For almost all browsers
+                    carContainer.requestFullscreen();
+                }
+                else if(carContainer.webkitRequestFullScreen){  //For Safari
+                    carContainer.webkitRequestFullScreen();
+                }
+                else if(carContainer.msRequestFullscreen){      //For IE11
+                    carContainer.msRequestFullscreen();
+                } 
+            });
+        }
+        );
+    </script>
+</body>
+</html>

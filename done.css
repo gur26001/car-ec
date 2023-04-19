@@ -1,0 +1,18 @@
+
+body{
+    background-color: aqua;
+}
+.point{
+    margin-top: 17% ;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.wrapper{
+    background-color: #fff;
+    width: 500px;
+    padding: 25px;
+    margin: 25px auto 0;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}

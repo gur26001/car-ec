@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body {
+        font-family: "Lato", sans-serif;
+        position:relative;
+        display:flex;
+        z-index:1;
+         height:100vh;
+        
+        }
+        nav{
+            height:100vh;
+            position:relative;
+            left:0;
+            top: 0;
+            display:flex;
+            width:auto;
+            overflow-x:hidden;
+        }
+        #nav i{
+            font-size:2rem;
+        }
+        #nav{
+            width:40px;
+            height:100%;
+            z-index:1;
+            background-color:gray;
+            color:white;
+            display:flex;
+            flex-direction:column;
+            justify-content :space-between;
+            align-items:center;
+            padding:0.3rem;
+        }
+        .sidebar {
+        height: 100%;
+        width: 0;
+        z-index: 1;
+        background-color: skyblue;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        
+        }
+
+        .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+        color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        }
+
+        .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        }
+
+        .openbtn:hover {
+        background-color: #444;
+        }
+        main{
+            position:relative;
+            
+        }
+        #main{
+        transition: margin-left .5s;
+        padding: 16px;
+        height:100vh;
+        width: 100%;
+        overflow:auto !important;
+        }
+        nav i{
+            color:rgba(0, 0, 0, 0.767);
+        }
+    
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 18px;}
+        }
+
+        /* Search bar */
+        body{
+            position: relative;
+            background-color: lightgray;
+        }
+        #fetched{
+            width: 62vw; 
+        }
+        #fetched #searchBar{
+            width: 100%;
+            height: 4.2vh;
+        }
+        #searchedCars{
+            box-sizing: border-box;
+            display:flex;
+            flex-direction: row;
+            justify-content:flex-start;
+            align-items:flex-start;
+            position: relative;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        #searchedCars .col{
+            transition: transform 0.5s;
+            width:32vw;
+            height: 75vh;
+            margin:0.1rem;
+            z-index:1;
+            box-shadow:0px 0px 3px black;
+            position:relative; 
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        #searchedCars .col:hover{
+            transform: translateY(-0.5rem);
+            box-shadow:0px 0px 5px black;
+        }
+        #searchedCars .col i{
+            font-weight:bold;
+        }
+        #searchedCars .parent{
+            position:relative;
+            width:100%;
+            height: 200px;
+            z-index:1;
+            top:0;
+            height:58%;
+        }
+        #searchedCars .description{
+            width:100%;
+            
+            padding:1rem;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-around;
+        }
+
+        #searchedCars .button{
+            display:flex;
+            width:100%;
+            justify-content:space-around;
+            
+        }
+        #searchedCars .btn{
+            padding: 10px;
+            width: 6rem;
+            border: 0px;
+        }
+        #searchedCars .image{
+            position: relative;
+            width:100%;
+            height:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            object-fit:cover;
+        }
+        #searchedCars .image img{
+            width:100%;
+            height:100%;
+        }
+        #searchedCars .more{
+        color: white;
+        position: absolute;
+        top: 0.5%;
+        right:1%;
+        z-index:2;
+        }
+        #searchedCars .more i{
+            font-size: 0.3rem;
+            margin: 2px;
+        }
+        #searchedCars .heart{
+            position: absolute;
+            top: 2%;
+            left: 1%;
+            color: beige;
+            /* text-shadow:; */
+        }
+        #searchedCars .heart i{
+            font-size:1.5rem;
+            
+        }
+        #searchedCars .check{
+            position: absolute;
+            bottom: 2%;
+            left: 1.4%;
+        }
+        #searchedCars .check input[type="checkbox"]{
+            width:1.4rem;
+            height:1.4rem;
+        }
+        #searchedCars .rating{
+            padding:0;
+        }
+        /*Add to cart*/
+        .add-cart{
+            position: absolute;
+            width: 100%;
+            background-color: darkgrey;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            cursor: pointer;
+            text-align: center;
+            }
+            a:hover{
+              text-decoration: none;
+              cursor: pointer;
+            }
+            a{
+              text-decoration: none;
+              
+            }
+</style>
+</head>
+<body>
+<nav>
+  <div id="nav" class="">
+    <div style="display:flex;flex-direction:column;justify-items:space-around;align-items:center;width:100%;">
+    	<div><a href="#"><i class="fa fa-user"></i></a></div>
+        <div><a href="home.html"><i class="fa fa-home"></i></a></div>
+        <div><a href="#"><i class="fa fa-search" ></i></a></div>
+        <div><a href="addCart.html"><i class="fa fa-shopping-cart" ></i></a></div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-items:space-around;align-items:center;width:100%;">
+    <div><a href="#"><i class="fa fa-cog" ></i></a></div>
+    <div><a href="#"><i class="fa fa-heart"></i></a></div>
+    </div>
+  </div>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <h1>Filter By: </h1>
+    <a href="#">
+      <ul>Brands
+        <li></li>
+      </ul>
+    </a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+<main>
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+    <div style="position:relative;width: 100%;">
+        <div id="fetched" style="display:flex;height:6vh;position: relative;">
+            <input type="text" id="searchBar" style="width: 95%;height: 100%;" placeholder="Search by any model name or brand name (Note : don't use comma)">
+            <button id="search" style="background-color: cornflowerblue;color: white;border: 1px solid cornflowerblue;width:5%;height:100% ;"><span><i class="fa fa-search"></i></span></button>
+        </div>
+            <li class="cart">
+            <a href="cart.html" style="background-color: royalblue; color: white; cursor: pointer; text-decoration: none;">
+              <i class="fa fa-cart-plus" style="vertical-align: bottom; font-size: 20px; padding-right: 5px;"></i>Cart<span>0</span></a>
+          </li>
+        <div id="searchedCars" style="position:relative;width:100%;">
+        </div>
+    </div>
+
+</main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById("mySidebar").style.opacity = "0";
+        function openNav(){ 
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("mySidebar").style.opacity = "1";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("mySidebar").style.overflow = "hidden";
+        document.getElementById("mySidebar").style.opacity = "0";
+        }
+
+    $(document).ready(function(){
+        
+        // Search Bar
+        function substrings(str){
+                let i, j;
+                const res = [];
+                for (i = 0; i < str.length; i++) {
+                    for (j = i + 1; j < str.length + 1; j++) {
+                        res.push(str.slice(i, j));
+                    };
+                };
+                return res;
+            }
+            $("#search").click(function(){
+                var searched= $("#searchBar").val();
+                var fg=0;
+                var keyWords = searched.split(" ");
+                $.get("http://localhost:3000/cars",function(data){
+                    $("#searchedCars").text("");
+                    console.log(data);
+                    var flag= 0;
+                    for(var i=0;i<keyWords.length;i++){
+                        // var subKeyWords= substrings(keyWords[i]);
+                        var toCheck= new RegExp(keyWords[i],"i");
+                        for(var k=0;k<data.length;k++){
+                            // var ft= data(k) ;
+                            var test = toCheck.test((data[k])["brand"]);
+                            // if(searched.length==2 && (data))
+                            if(test){//will check company name by keywords
+                                for(var j = 0;j<(data[[i]])["models"].length;j++){
+                                    flag=1;
+                                    // $("#searchedCars").append("<div class='col'><div class='parent'><div class='image'><img src= "+ (((data[[k]])["models"])[j])["img-url"] + "></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div></div><div class='description'><h2>"+ (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] +"</h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])["models"])[j])["Seating-capacity"] + "</li><li>Horsepower : "+(((data[[k]])["models"])[j])["Horsepower"] + "</li><li>Engine : " + (((data[[k]])["models"])[j])["Engine"] + "</li><li>Fuel-type : "+(((data[[k]])["models"])[j])["Fuel-type"]+ "</li><li>Fuel-economy :" + (((data[[k]])["models"])[j])["Fuel-economy"] + "</li><li>Fuel-tank-capacity : " + (((data[[k]])["models"])[j])["Fuel-tank-capacity"] + "</li><h2>Price : " + (((data[[k]])["models"])[j])["price"] + "</h2></div><div class='button'><button class='btn btn-secondary'>View Details</button><button class='btn btn-primary'> Test drive</button></div></div></div>");
+                                    $("#searchedCars").append("<a href='SingleProductPage.html' target='_blank'><div class='col'><div class='parent'><div class='image'><img src=   "  +(((data[[k]])["models"])[j])["img-url"]+  "   ></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div></div><div class='description'><h2>" + (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] + " </h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])[ "models"  ])[j])[ "Seating-capacity" ] + "</li><li>Horsepower :    " + (((data[[k]])[  "models"  ])[j])[  "Horsepower"  ]  + "</li><li>Engine :     " + (((data[[k]])[  "models"  ])[j])[  "Engine"  ]  + "  </li><li>Fuel-type :    " + (((data[[k]])[  "models"  ])[j])[  "Fuel-type"  ] + "  </li><li>Fuel-economy : " + (((data[[k]])[  "models"  ])[j])[  "Fuel-economy"  ] +  "  </li><li>Fuel-tank-capacity :    " + (((data[[k]])[  "models"  ])[j])[  "Fuel-tank-capacity"  ]  + " </li><h2>Price :   "+ (((data[[k]])[  "models"  ])[j])[  "price"  ]  + "  </h2></div><div class='button'><button class='add-cart'><a href='#' style='background-color: blue; border: none; height: 35px; width: 60px;'>Book Now</a></button><button class='btn btn-primary'>Test drive</button></div></div></a>");                                    
+                                    
+                                }
+
+                            }
+                            
+                            else{//will check company name by keywords
+                                for(var j=0;j<(data[k])["models"].length;j++){
+                                    var test2= toCheck.test((((data[k])["models"])[j])["modelName"]);
+                                    if(test2){
+                                        flag=1;
+
+        
+                                        //$("#searchedCars").append("<div class='col'><div class='parent'><div class='image'><img src= "+ (((data[[k]])["models"])[j])["img-url"] + "></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div><div class='check'><input type='checkbox'></div></div><div class='description'><h2>"+ (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] +"</h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])["models"])[j])["Seating-capacity"] + "</li><li>Horsepower : "+(((data[[k]])["models"])[j])["Horsepower"] + "</li><li>Engine : " + (((data[[k]])["models"])[j])["Engine"] + "</li><li>Fuel-type : "+(((data[[k]])["models"])[j])["Fuel-type"]+ "</li><li>Fuel-economy :" + (((data[[k]])["models"])[j])["Fuel-economy"] + "</li><li>Fuel-tank-capacity : " + (((data[[k]])["models"])[j])["Fuel-tank-capacity"] + "</li><h2>Price : " + (((data[[k]])["models"])[j])["price"] + "</h2></div><div class='button'><button class='btn btn-secondary'>View Details</button><button class='btn btn-primary'> Test drive</button></div></div></div>");
+                                        $("#searchedCars").append("<a href='SingleProductPage.html' target='_blank'><div class='col'><div class='parent'><div class='image'><img src=   "  +(((data[[k]])["models"])[j])["img-url"]+  "   ></div><div class='heart'><i class='fa fa-heart-o' aria-hidden='true'></i></div><div class='more'><i class='fa fa-circle op '  aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i><i class='fa fa-circle op' aria-hidden='false'></i></div></div><div class='description'><h2>" + (data[k])["brand"]+(((data[[k]])["models"])[j])["modelName"] + " </h2><div class='rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i></div><div><li>Seating-capacity : " + (((data[[k]])[ "models"  ])[j])[ "Seating-capacity" ] + "</li><li>Horsepower :    " + (((data[[k]])[  "models"  ])[j])[  "Horsepower"  ]  + "</li><li>Engine :     " + (((data[[k]])[  "models"  ])[j])[  "Engine"  ]  + "  </li><li>Fuel-type :    " + (((data[[k]])[  "models"  ])[j])[  "Fuel-type"  ] + "  </li><li>Fuel-economy : " + (((data[[k]])[  "models"  ])[j])[  "Fuel-economy"  ] +  "  </li><li>Fuel-tank-capacity :    " + (((data[[k]])[  "models"  ])[j])[  "Fuel-tank-capacity"  ]  + " </li><h2>Price :   "+ (((data[[k]])[  "models"  ])[j])[  "price"  ]  + "  </h2></div><div class='button'><button class='add-cart'><a href='#' style='background-color: blue; border: none; height: 35px; width: 60px;'>Book Now</a></button><button class='btn btn-primary'>Test drive</button></div></div></a>");
+                                        
+                                    }
+                                }
+                                
+                            }
+                            if(flag==0){
+                                $("#searchedCars").text("Not Found");
+                            }
+
+                        }
+                        
+                        
+                        // else if(){} //will check model name by keywords
+                        // else if(){} //will check by substrings to check company name
+                        // else if(){} //will check by substrings to check model name
+                        // else{$("#searchedCars").text("Not Found")}  //result not found
+                        
+                    }
+                })
+            })
+            let carts = document.querySelectorAll('.add-cart');
+let products = [
+  {
+    name: 'Creta',
+    tag: 'creta',
+    price: 15,
+    inCart: 0
+  },
+  {
+    name: 'Vitara Breeza',
+    tag: 'vitarabreeza',
+    price: 0,
+    inCart: 0
+  },
+  {
+    name: 'Tata Nexon',
+    tag: 'tatanexon',
+    price: 15,
+    inCart: 0
+  },
+  {
+    name: 'Amaze',
+    tag: 'amaze',
+    price: 0,
+    inCart: 0
+  },
+  {
+    name: 'Swift',
+    tag: 'swift',
+    price: 15,
+    inCart: 0
+  },
+  {
+    name: 'i20',
+    tag: '20i',
+    price: 0,
+    inCart: 0
+  }
+]
+for(let i=0; i<carts.length; i++){
+  carts[i].addEventListener('click', () => {
+    cartNumbers(products[i]);
+    totalCost(products[i])
+  })
+}
+
+function onLoadCartNumbers(){
+  let productNumbers = localStorage.getItem('cartNumbers');
+
+  if(productNumbers){
+    document.querySelector('.cart span').textContent = productNumbers;
+  }
+}
+
+function cartNumbers(product){
+
+  let productNumbers = localStorage.getItem('cartNumbers');
+  
+  productNumbers = parseInt(productNumbers);
+
+  if( productNumbers) {
+      localStorage.setItem('cartNumbers', productNumbers + 1);
+      document.querySelector('.cart span').textContent = productNumbers + 1;
+
+  } else {
+      localStorage.setItem('cartNumbers', 1);
+      document.querySelector('.cart span').textContent = 1;
+  }
+
+  setItems(product);
+}
+
+function setItems(product) {
+  let cartItems = localStorage.getItem('productsInCart');
+  cartItems = JSON.parse(cartItems);
+
+  if(cartItems != null){
+
+    if(cartItems[product.tag] == undefined) {
+      cartItems = {
+        ...cartItems,
+        [product.tag]: product
+      }
+    }
+
+    cartItems[product.tag].inCart += 1;
+  } else {
+    product.inCart = 1;
+    cartItems = {
+      [product.tag]: product
+    }
+  }
+
+  localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+}
+
+function totalCost(product){
+  /*console.log("The product price is", product.price);*/
+  let cartCost = localStorage.getItem('totalCost');
+  cartCost = parseInt(cartCost);
+  console.log("My cartCost is", cartCost);
+  
+  if (cartCost != null) {
+    localStorage.setItem("totalCost", cartCost + product.price);
+  } else{
+    localStorage.setItem("totalCost", product.price);
+  }
+
+}
+
+function displayCart(){
+  let cartItems = localStorage.getItem("productsInCart");
+  cartItems = JSON.parse(cartItems);
+  let productContainer = document.querySelector
+  (".products-container");
+
+  console.log(cartItems);
+  if (cartItems && productContainer) {
+    productContainer.innerHTML = '';
+    Object.values(cartItems).map(item => {
+      productContainer.innerHTML += "<div class='product'><i class='fa fa-times-circle'></i><img src=./images/"+$(item,tag).png+"><span>"+$(item.name)+"</span></div>"
+              });
+
+    
+  }
+}
+
+
+    onLoadCartNumbers();
+    displayCart();
+})
+
+
+</script>
+   
+</body>
+</html> 
